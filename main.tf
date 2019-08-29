@@ -7,13 +7,14 @@ provider "aws" {
 }
 
 resource "aws_instance" "ubuntu" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
+  ami               = var.ami_id
+  instance_type     = var.instance_type
   availability_zone = "${var.aws_region}b"
 
   tags = {
-    Name = var.name
-    Owner = var.owner
+    Name       = var.name
+    Owner      = var.owner
     DeployedBy = "Terraform"
+    TTL        = "24h"
   }
 }

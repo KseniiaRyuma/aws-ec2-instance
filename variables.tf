@@ -1,6 +1,6 @@
 variable "aws_region" {
   description = "AWS region"
-  default = "us-west-2"
+  default     = "us-west-2"
 }
 
 variable "ami_id" {
@@ -12,12 +12,12 @@ variable "ami_id" {
 
 variable "instance_type" {
   description = "type of EC2 instance to provision."
-  default = "t3.micro"
+  default     = "t3.micro"
 }
 
 variable "name" {
   description = "name to pass to Name tag"
-  default = "Phan-Provisioned by Terraform"
+  default     = "Phan-Provisioned by Terraform"
 }
 
 variable "owner" {

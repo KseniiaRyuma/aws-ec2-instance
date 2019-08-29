@@ -1,17 +1,19 @@
 terraform {
-  required_version = ">= 0.11.0"
+  required_version = ">= 0.12.0"
 }
 
 provider "aws" {
-  region = "${var.aws_region}"
+  region = var.aws_region
 }
 
 resource "aws_instance" "ubuntu" {
-  ami           = "${var.ami_id}"
-  instance_type = "${var.instance_type}"
-  availability_zone = "${var.aws_region}a"
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  availability_zone = "${var.aws_region}b"
 
-  tags {
-    Name = "${var.name}"
+  tags = {
+    Name = var.name
+    Owner = var.owner
+    DeployedBy = "Terraform"
   }
 }

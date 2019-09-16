@@ -19,9 +19,15 @@ resource "aws_instance" "ubuntu" {
   }
 }
 
-resource "aws_security_group" "ssh" {
-  name        = "allow_ssh"
-  description = "Allow SSH inbound traffic"
+resource "aws_security_group" "bastion" {
+  name = "phan-bastion"
+  tags = {
+    Name = "SSH"
+  }
+}
+resource "aws_security_group_rule" "allow_ssh_in" {
+  type = "ingress"
+  security_group_id = "aws_security_group.bastion.id"
   ingress {
     from_port   = 22
     to_port     = 22
@@ -30,7 +36,10 @@ resource "aws_security_group" "ssh" {
       "0.0.0.0/0"
       ]
   }
-
+}
+resource "aws_security_group_rule" "allow_all_out" {
+  type = "egress"
+  security_group_id = "aws_security_group.bastion.id"
   egress {
     from_port   = 0
     to_port     = 0
@@ -39,7 +48,5 @@ resource "aws_security_group" "ssh" {
       "0.0.0.0/0"
       ]
   }
-  tags = {
-    Name = "SSH"
-  }
 }
+

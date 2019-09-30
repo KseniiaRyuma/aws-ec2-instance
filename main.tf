@@ -10,6 +10,7 @@ resource "aws_instance" "ubuntu" {
   ami               = var.ami_id
   instance_type     = var.instance_type
   availability_zone = "${var.aws_region}b"
+  vpc_security_group_ids = "${aws_security_group.bastion.id}"
 
   tags = {
     Name       = var.name

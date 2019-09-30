@@ -18,3 +18,31 @@ resource "aws_instance" "ubuntu" {
     TTL        = "24h"
   }
 }
+
+resource "aws_security_group" "bastion" {
+  name = "phan-bastion"
+  tags = {
+    Name = "SSH"
+  }
+}
+resource "aws_security_group_rule" "allow_ssh_in" {
+  type = "ingress"
+  security_group_id = aws_security_group.bastion.id
+  from_port   = 22
+  to_port     = 22
+  protocol    = "tcp"
+  cidr_blocks = [
+    "0.0.0.0/0"
+  ]
+}
+resource "aws_security_group_rule" "allow_all_out" {
+  type = "egress"
+  security_group_id = aws_security_group.bastion.id
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
+  cidr_blocks = [
+    "0.0.0.0/0"
+  ]
+}
+

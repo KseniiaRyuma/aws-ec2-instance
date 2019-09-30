@@ -21,7 +21,7 @@ resource "aws_instance" "ubuntu" {
 }
 
 resource "aws_security_group" "bastion" {
-  name = "phan-bastion"
+  name = "${var.name}-bastion"
   tags = {
     Name = "SSH"
   }

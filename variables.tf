@@ -1,6 +1,6 @@
 variable "aws_region" {
   description = "AWS region"
-  default     = "us-west-1"
+  default     = "us-west-2" # us-west-1 will fail. us-west-2 will pass
 }
 
 variable "ami_id" {
@@ -17,7 +17,7 @@ variable "instance_type" {
 
 variable "name" {
   description = "name to pass to Name tag"
-  default     = "Phan-Provisioned by Terraform"
+  default     = "pphan"
 }
 
 variable "owner" {

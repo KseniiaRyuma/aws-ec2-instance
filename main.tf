@@ -16,7 +16,7 @@ resource "aws_instance" "ubuntu" {
     Name       = var.name
     Owner      = var.owner
     DeployedBy = "Terraform"
-    TTL        = "24d"
+    TTL        = "24days"
   }
 }
 

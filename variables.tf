@@ -1,6 +1,6 @@
 variable "aws_region" {
   description = "AWS region"
-  default     = "us-west-1" # us-west-1 will fail. us-west-2 will pass.
+  default     = "us-west-2" # us-west-1 will fail. us-west-2 will pass.
 }
 
 variable "ami_id" {

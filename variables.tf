@@ -12,7 +12,7 @@ variable "ami_id" {
 
 variable "instance_type" {
   description = "type of EC2 instance to provision."
-  default     = "t3.medium"
+  default     = "t3.large"
 }
 
 variable "name" {
